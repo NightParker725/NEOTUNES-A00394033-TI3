@@ -4,12 +4,23 @@ public class Song extends Audio {
 	private String album;
 	private double value;
 	private int unitsSold;
+	private MusicGenre genre;
 	//methods
-	public Song(String name, String coverpage, double durationtime, int numberOfReproduction, String album, double value, int unitsSold){
+	public Song(String name, String coverpage, double durationtime, int numberOfReproduction, String album, double value, int unitsSold, int g){
 		super(name, coverpage, durationtime, numberOfReproduction);
 		this.album = album;
 		this.value = value;
 		this.unitsSold = unitsSold;
+		switch(g){
+			case 1: genre = MusicGenre.ROCK;
+			break;
+			case 2: genre = MusicGenre.POP;
+			break;
+			case 3: genre = MusicGenre.HOUSE;
+			break;
+			case 4: genre = MusicGenre.TRAP;
+			break;
+		}
 	}
 	public String getalbum(){
 		return album;

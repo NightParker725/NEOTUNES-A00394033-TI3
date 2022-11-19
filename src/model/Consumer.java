@@ -1,6 +1,6 @@
 package model;
 import java.util.Calendar;
-public class  Consumer extends User{
+public abstract class  Consumer extends User{
 	//attributes
 	private double stReproduced;
 	private double ptReproduced;
@@ -18,6 +18,7 @@ public class  Consumer extends User{
 		this.mlp=mlp;
 		this.mls=mls;
 	}
+	//getters and setters
 	public double getStReproduced(){
 		return stReproduced;
 	}	
@@ -39,7 +40,6 @@ public class  Consumer extends User{
 	public String getMlsUser(){
 		return mlsUser;
 	}
-	
 	public void setMlsUser(String mlsUser){
 		this.mlsUser = mlsUser;
 	}
@@ -55,4 +55,10 @@ public class  Consumer extends User{
 	public void setMls(String mls){
 		this.mls = mls;
 	}
+	public abstract String addPlaylist(String name,int id);
+	public abstract String showPlaylists();
+	public abstract void addPlaylistContent(int playlist,Song song);
+	public abstract void addPlaylistContent(int playlist,Podcast pod);
+	public abstract String showPlaylistContent(int playlist);
+	public abstract void removePlaylistContent(int playlist,int num);
 }

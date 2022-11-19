@@ -1,6 +1,6 @@
 package model;
 import java.util.Calendar;
-public class  User{
+public class User{
 	//attributes
 	private String id;
 	private String nickname;

@@ -12,28 +12,28 @@ public class Audio {
 		this.duration = duration;
 		this.qReproduction = qReproduction;
 	}
-	public String getName(){
+	public String getname(){
 		return name;
 	}
-	public void setName(String name){
+	public void setname(String name){
 		this.name = name;
 	}
-	public String getCover(){
+	public String getcover(){
 		return cover;
 	}
-	public void setCover(String cover){
+	public void setcover(String cover){
 		this.cover = cover;
 	}
-	public double getDuration(){
+	public double getduration(){
 		return duration;
 	}
-	public void setDuration(double duration){
+	public void setduration(double duration){
 		this.duration = duration;
 	}
-	public int getQReproduction(){
+	public int getqReproduction(){
 		return qReproduction;
 	}
-	public void setQReproduction(int qReproduction){
+	public void setqReproduction(int qReproduction){
 		this.qReproduction = qReproduction;
 	}
 }
