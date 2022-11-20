@@ -30,6 +30,14 @@ public class Playlist{
 		}
 		return msg;
 	}
+	public Audio getContent(int num){
+		Audio a = (Audio) audioSaved.get(num);
+		return a;
+	}
+	public int getContentSize(int num){
+		int a = audioSaved.size();
+		return a;
+	}
 	//getters
 	public String getname(){
 		return name;

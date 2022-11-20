@@ -3,13 +3,16 @@ import java.util.Calendar;
 import java.util.ArrayList;
 public class Premium extends Consumer implements Buyable, Reproductionable{
 	private ArrayList<Playlist> playlistsCreated;
+	private ArrayList<Song> purchasedSongs;
 	//methods
 	public Premium(String id,String nickname,double ptReproduced,double stReproduced,String mlpUser,String mlsUser,String mlp,String mls,Calendar vinculationdate){
 		super(id,nickname, ptReproduced, stReproduced, mlpUser, mlsUser, mlp, mls, vinculationdate);
 		this.playlistsCreated = new ArrayList<Playlist>();
+		this.purchasedSongs = new ArrayList<Song>();
 	}
-	public String buysong(){
-		String msg = "the song has been bought.";
+	public String buysong(Song song){
+		purchasedSongs.add(song);
+		String msg = "The song has been bought.";
 		return msg;
 	}
 	public String reproduction(){
@@ -42,5 +45,14 @@ public class Premium extends Consumer implements Buyable, Reproductionable{
 	}
 	public void removePlaylistContent(int playlist,int num){
 		playlistsCreated.get(playlist).removeContent(num);
+	}
+	public Playlist getPlaylist(int list){
+		Playlist p = (Playlist) playlistsCreated.get(list);
+		return p;
+	}
+	public int getPlaylistSize(int list){
+		Playlist p = playlistsCreated.get(list);
+		int q = p.getContentSize(list);
+		return q;
 	}
 }

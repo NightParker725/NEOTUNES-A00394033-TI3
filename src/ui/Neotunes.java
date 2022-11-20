@@ -105,14 +105,34 @@ public class Neotunes{
 							i++;
 						 }while(q >= i);
 						break;
-						case 4: 
-							System.out.println("coming soon.");
+						case 4:
+							 i=0;
+							msg = neo.showPlaylists(nickname);
+							System.out.println(msg);
+							System.out.println("Type the playlist (num) to modify");
+							opt2 = lector.nextInt();
+							lector.nextLine();
+							String code = neo.shareId(nickname, opt2);
+							System.out.println("Your code to share is: " + code);
 						break;
 					}
 					
 				break;
 				case 4:
-					System.out.println("Not available at the moment.");
+					i = 0;
+					System.out.println("Type your nickname: ");
+					nickname = lector.nextLine();
+					msg = neo.showAudios();
+					System.out.println("Type the quantity of audios you want to buy: ");
+					q = lector.nextInt();
+					lector.nextLine();
+					do{
+						System.out.println("Choose the audio you want to buy: (Only Songs are available to purchase)");
+						j = lector.nextInt();
+						lector.nextLine();
+						msg = neo.buySong(nickname, j);
+						i++;
+					}while(q >= i);
 				break;
 				case 5:
 					System.out.println("Not available at the moment.");

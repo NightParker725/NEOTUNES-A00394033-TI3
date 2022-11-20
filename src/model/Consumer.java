@@ -61,4 +61,6 @@ public abstract class  Consumer extends User{
 	public abstract void addPlaylistContent(int playlist,Podcast pod);
 	public abstract String showPlaylistContent(int playlist);
 	public abstract void removePlaylistContent(int playlist,int num);
+	public abstract Playlist getPlaylist(int playlist);
+	public abstract int getPlaylistSize(int playlist);
 }

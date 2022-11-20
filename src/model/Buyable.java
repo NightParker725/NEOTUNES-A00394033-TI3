@@ -1,4 +1,4 @@
 package model;
 public interface Buyable{
-	String buysong();
+	String buysong(Song song);
 } 
