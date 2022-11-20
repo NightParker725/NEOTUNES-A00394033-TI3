@@ -9,14 +9,15 @@ public class AudioCollection{
 	int[][] id = new int [5][5];
 	//methods
 	public AudioCollection(){
-	 this.library= new ArrayList<Audio>();
-	 this.users= new ArrayList<User>();
+		this.library= new ArrayList<Audio>();
+		this.users= new ArrayList<User>();
+		makeMatrix(id);
 	}
-	public static int getRandomInt(int min, int max){
+	public int getRandomInt(int min, int max){
 		int num = (int)(Math.random()*((max-min)+1))+min;
 		return num;
 	}
-	public static void makeMatrix(int[][] matrix){
+	public void makeMatrix(int[][] matrix){
 		int min = 0, max = 9, num = 0;
 		for (int i = 0; i < matrix.length; i++){
 			for (int j = 0; j < matrix[0].length; j++){
@@ -26,7 +27,7 @@ public class AudioCollection{
 		}
 	}
 	public String buySong(String nickname, int num){
-		String msg = "Cannot register content";
+		String msg = "Cannot buy content.";
 		String id = "";
 		for(int i = 0; i < users.size(); i++){
 			id = users.get(i).getid();
@@ -35,11 +36,54 @@ public class AudioCollection{
 					Song s = (Song) library.get(num);
 					if(users.get(i) instanceof Premium){
 						Premium user = (Premium) users.get(i);
-						msg = user.buysong(s);
+						double val = s.getvalue();
+						msg = "The song cost: " + val + ", proceding with the purchase..";
+						msg = msg + "\n" + user.buysong(s);
 					}
 					else{
 						Standard user = (Standard) users.get(i);
-						msg = user.buysong(s);
+						double val = s.getvalue();
+						msg = "The song cost: " + val + ", proceding with the purchase..";
+						msg = msg + "\n" + user.buysong(s);
+					}
+					
+				}
+			}
+		}
+		return msg;
+	}
+	public String reproduceSong(String nickname, int num){
+		String msg = "Cannot reproduce content.";
+		String msg2 = "";
+		String id = "";
+		for(int i = 0; i < users.size(); i++){
+			id = users.get(i).getid();
+			if(users.get(i) instanceof Consumer && searchUser(nickname, id)){
+				if(library.get(num) instanceof Song){
+					Song s = (Song) library.get(num);
+					if(users.get(i) instanceof Premium){
+						Premium user = (Premium) users.get(i);
+						msg = "\n" + user.reproduction(s);
+					}
+					else{
+						Standard user = (Standard) users.get(i);
+						if(user.getStReproduced() % 2 == 0){
+							msg2 = "Advertise: " + user.advertise() + ", Please wait ";
+						}
+						msg = msg2 + "\n" + user.reproduction(s);
+					}
+					
+				}
+				if(library.get(num) instanceof Podcast){
+					Podcast p = (Podcast) library.get(num);
+					if(users.get(i) instanceof Premium){
+						Premium user = (Premium) users.get(i);
+						msg = "\n" + user.reproduction(p);
+					}
+					else{
+						Standard user = (Standard) users.get(i);
+						msg2 = "Advertise: " + user.advertise() + ", Please wait ";
+						msg = msg2 + "\n" + user.reproduction(p);
 					}
 					
 				}
@@ -137,13 +181,13 @@ public class AudioCollection{
 	public String showAudios(){
 		String msg = "";
 		for(int i = 0; i < library.size(); i++){
-			msg = msg + i + library.get(i).getname() + "\n";
+			msg = msg + (i+1) + ". " + library.get(i).getname() + "\n";
 		}
 		return msg;
 	}
 	public String addPlaylistContent(int playlist,int pos,String nickname){
+		pos--;
 		String msg = "Cannot add. Invalid user.";
-		if(library.get(pos)!=null){
 			if(library.get(pos) instanceof Song){
 				Song song= (Song) library.get(pos);	
 				for(int i = 0; i < users.size(); i++){
@@ -164,7 +208,6 @@ public class AudioCollection{
 					}
 				}
 			}
-		}
 		return msg;
 	}
 	public String showPlaylistContent(String nickname, int playlist){

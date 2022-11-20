@@ -19,14 +19,15 @@ public class Playlist{
 		audioSaved.add(song);
 	}
 	public void removeContent(int audio){
+		audio--;
 		audioSaved.remove(audio);
 	}
 	public String showContent(){
-		String msg = "Content:/n";
+		String msg = "Content:\n";
 		String name = "";
 		for(int i = 0; i < audioSaved.size(); i++){
 			name = audioSaved.get(i).getname();
-			msg = msg + i + " " + name + "/n";
+			msg = msg + (i+1) + " " + name + "\n";
 		}
 		return msg;
 	}

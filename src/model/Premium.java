@@ -15,8 +15,16 @@ public class Premium extends Consumer implements Buyable, Reproductionable{
 		String msg = "The song has been bought.";
 		return msg;
 	}
-	public String reproduction(){
-		String msg = "You are listening: Example....";
+	public String reproduction(Song song){
+		String msg = "You are listening: "+"      "+song.getname()+"\n"
+		+"From the album: "+"            "+song.getalbum()+"\n"
+		+"Genre: "+"                     "+song.getgenre()+"\n";
+		return msg;
+	}
+	public String reproduction(Podcast podcast){
+		String msg = "You are listening: "+"      "+podcast.getname()+"\n"
+		+"Description: "+"               "+podcast.getdescription()+"\n"
+		+"Category: "+"                  "+podcast.getcategory()+"\n";
 		return msg;
 	}
 	public String addPlaylist(String name,int id){
@@ -34,7 +42,7 @@ public class Premium extends Consumer implements Buyable, Reproductionable{
 		String msg = "", playlists = "";
 		for(int i = 0 ; i < playlistsCreated.size(); i++){
 			playlists = playlistsCreated.get(i).getname();
-			msg = msg + i + " " + playlists + "\n";
+			msg = msg + (i+1) + " " + playlists + "\n";
 		}
 		return msg;
 	}

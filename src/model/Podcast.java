@@ -20,10 +20,16 @@ public class Podcast extends Audio {
 		}
 	}
 	//getters and setters
-	public String getdesc(){
+	public String getdescription(){
 		return description;
 	}
 	public void setdescription(String description){
 		this.description = description;
+	}
+	public PodcastCategory getcategory(){
+		return category;
+	}
+	public void setcategory(PodcastCategory category){
+		this.category = category;
 	}
 }

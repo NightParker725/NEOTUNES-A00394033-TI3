@@ -22,11 +22,18 @@ public class Song extends Audio {
 			break;
 		}
 	}
+	//getters and setters
 	public String getalbum(){
 		return album;
 	}
 	public void setalbum(String album){
 		this.album = album;
+	}
+	public MusicGenre getgenre(){
+		return genre;
+	}
+	public void setgenre(MusicGenre genre){
+		this.genre = genre;
 	}
 	public double getvalue(){
 		return value;
