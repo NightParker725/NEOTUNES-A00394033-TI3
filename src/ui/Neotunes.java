@@ -7,6 +7,12 @@ public class Neotunes{
 	//relations 
 	private AudioCollection neo;
 	//methods
+	/** 
+	<br> Name: Neotunes
+	<br> @param: void
+	<br> @return: void
+	<br> Process: creates the object Neotunes
+	*/
 	public Neotunes(){
 		neo = new AudioCollection();
 	}
@@ -14,6 +20,12 @@ public class Neotunes{
 		Neotunes neot = new Neotunes();
         neot.menu();	
     }
+	/** 
+	<br> Name: menu
+	<br> @param: void
+	<br> @return: void
+	<br> Process: generates the menu or interface for the user.
+	*/
 	public void menu(){
 	 	int q = 0, i = 0, j = 0, pos = 0, opt = 0, opt2 = 0; 
 		String nickname = "", id = "", msg = "";
@@ -47,7 +59,7 @@ public class Neotunes{
 					q = lector.nextInt();
 					lector.nextLine();
 						do{
-							registercontent();
+							registerContent();
 							i++;
 						}while(q > i);
 				break;
@@ -202,6 +214,12 @@ public class Neotunes{
 		}
 		while(opt!=7);
 	}
+	/** 
+	<br> Name: registerUser
+	<br> @param: void
+	<br> @return: void
+	<br> Process: register the different types of user
+	*/
 	public void registerUser() {
 		String id = "", nickname = "", name = "", msg = "", photo = "", mlpUser = "", mlsUser = "", mlp = "", mls = "";
 		Calendar vinculationdate = Calendar.getInstance();
@@ -257,7 +275,13 @@ public class Neotunes{
 		}
 		System.out.println(msg);
 	}
-	public void registercontent(){
+	/** 
+	<br> Name: registerContent
+	<br> @param: void
+	<br> @return: void
+	<br> Process: register the different types of content.
+	*/
+	public void registerContent(){
 		String msg = "",name = "", nickname = "", cover = "",description = "",album = "", id ="";
 		int numvisualizations = 0,opt = 0,unitssold = 0, genre = 0;
 		double value=0;
@@ -321,6 +345,12 @@ public class Neotunes{
 			System.out.println("Cannot find user.");
 		}
 	}
+	/** 
+	<br> Name: registerPlaylist
+	<br> @param: String nickname, String id
+	<br> @return: void
+	<br> Process: register a playlist.
+	*/
 	public void registerPlaylist(String nickname, String id){
 		boolean exist = neo.searchUser(nickname, id);
 		String name = "", msg = "Cannot create playlist";

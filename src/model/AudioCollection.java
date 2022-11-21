@@ -8,15 +8,33 @@ public class AudioCollection{
 	
 	int[][] id = new int [5][5];
 	//methods
+		/** 
+	<br> Name: AudioCollection
+	<br> @param: void
+	<br> @return: void
+	<br> Process: creates the object audiocollection
+	*/
 	public AudioCollection(){
 		this.library= new ArrayList<Audio>();
 		this.users= new ArrayList<User>();
 		makeMatrix(id);
 	}
+		/** 
+	<br> Name: getRandomInt
+	<br> @param: int min, int max
+	<br> @return: int num
+	<br> Process: creates a random number
+	*/
 	public int getRandomInt(int min, int max){
 		int num = (int)(Math.random()*((max-min)+1))+min;
 		return num;
 	}
+		/** 
+	<br> Name: makeMatrix
+	<br> @param: int[][] matrix
+	<br> @return: void
+	<br> Process: creates a random matrix
+	*/
 	public void makeMatrix(int[][] matrix){
 		int min = 0, max = 9, num = 0;
 		for (int i = 0; i < matrix.length; i++){
@@ -26,6 +44,12 @@ public class AudioCollection{
 			}
 		}
 	}
+		/** 
+	<br> Name: buySong
+	<br> @param: String nickname, int num
+	<br> @return: String msg
+	<br> Process: buys a song for the consumer user type
+	*/
 	public String buySong(String nickname, int num){
 		String msg = "Cannot buy content.";
 		String id = "";
@@ -52,6 +76,12 @@ public class AudioCollection{
 		}
 		return msg;
 	}
+			/** 
+	<br> Name: reproduceSong
+	<br> @param: String nickname, int num
+	<br> @return: String msg
+	<br> Process: reproduce a song for the consumer user type
+	*/
 	public String reproduceSong(String nickname, int num){
 		String msg = "Cannot reproduce content.";
 		String msg2 = "";
@@ -91,6 +121,12 @@ public class AudioCollection{
 		}
 		return msg;
 	}
+			/** 
+	<br> Name: addUser
+	<br> @param: String id,String nickname,double ptReproduced,double stReproduced,String mlpUser,String mlsUser,String mlp,String mls,Calendar vinculationdate,int option
+	<br> @return: String msg
+	<br> Process: creates a consumer user type of standard or premium
+	*/
 	public String addUser(String id,String nickname,double ptReproduced,double stReproduced,String mlpUser,String mlsUser,String mlp,String mls,Calendar vinculationdate,int option){
 		String msg = "";
 		if(!searchUser(nickname,id)){
@@ -106,6 +142,12 @@ public class AudioCollection{
 		}
 		return msg;
 	}
+	/** 
+	<br> Name: addUser
+	<br> @param: String id,String nickname,String name,String photo,int numvisualizations,Calendar vinculationdate,int opt
+	<br> @return: String msg
+	<br> Process: creates a producer user type of artist or creatorcontent
+	*/
 	public String addUser(String id,String nickname,String name,String photo,int numvisualizations,Calendar vinculationdate,int opt){
 		String msg = "";
 		if(!searchUser(nickname,id)){
@@ -120,15 +162,27 @@ public class AudioCollection{
 		}
 		return msg;
 	}
+	/** 
+	<br> Name: searchUser
+	<br> @param: String nickname,String id
+	<br> @return: boolean exist
+	<br> Process: searchs if the user exist in the data system saved
+	*/
 	public boolean searchUser(String nickname,String id){
-	boolean exist= false; 
-	for (int i=0; i<users.size() && !exist; i++){
-			if(users.get(i).getnickname().equalsIgnoreCase(nickname) && users.get(i).getid().equalsIgnoreCase(id)){
-				exist=true;
-			}
+		boolean exist= false; 
+		for (int i=0; i<users.size() && !exist; i++){
+				if(users.get(i).getnickname().equalsIgnoreCase(nickname) && users.get(i).getid().equalsIgnoreCase(id)){
+					exist=true;
+				}
+		}
+		return exist;
 	}
-	return exist;
-	}
+	/** 
+	<br> Name: addContent
+	<br> @param: String nickname,String name,String cover,double duration,int qReproduction,String album,double value,int unitssold,int genre
+	<br> @return: String msg
+	<br> Process: creates an song type of audio
+	*/
 	public String addContent(String nickname,String name,String cover,double duration,int qReproduction,String album,double value,int unitssold,int genre){
 		String msg = "Cannot register content";
 		String id = "";
@@ -143,6 +197,12 @@ public class AudioCollection{
 		}
 		return msg;
 	}
+	/** 
+	<br> Name: addContent
+	<br> @param: String nickname,String name,String cover,double duration,int qReproduction,String description,int category
+	<br> @return: String msg
+	<br> Process: creates an podcast type of audio
+	*/
 	public String addContent(String nickname,String name,String cover,double duration,int qReproduction,String description,int category){
 		String msg = "Cannot register content";
 		String id = "";
@@ -157,6 +217,12 @@ public class AudioCollection{
 		}
 		return msg;
 	}
+	/** 
+	<br> Name: addPlaylist
+	<br> @param: String nickname,String name,String id
+	<br> @return: String msg
+	<br> Process: creates a playlist object
+	*/
 	//the id is 0 meanwhile.
 	public String addPlaylist(String nickname,String name,int id){
 		String msg ="Cannot create playlist. Invalid user.";
@@ -168,6 +234,12 @@ public class AudioCollection{
 		}
 		return msg;
 	}
+	/** 
+	<br> Name: showPlaylists
+	<br> @param: String nickname
+	<br> @return: String msg
+	<br> Process: shows the playlists created by the user
+	*/
 	public String showPlaylists(String nickname){
 		String msg = "";
 		for(int i = 0; i < users.size(); i++){
@@ -178,6 +250,12 @@ public class AudioCollection{
 		}
 		return msg;
 	}
+	/** 
+	<br> Name: showAudios
+	<br> @param: void
+	<br> @return: String msg
+	<br> Process: shows the audios that contains the library
+	*/
 	public String showAudios(){
 		String msg = "";
 		for(int i = 0; i < library.size(); i++){
@@ -185,8 +263,15 @@ public class AudioCollection{
 		}
 		return msg;
 	}
+	/** 
+	<br> Name: addPlaylistContent
+	<br> @param: int playlist,int pos,String nickname
+	<br> @return: String msg
+	<br> Process: adds audios to a playlist
+	*/
 	public String addPlaylistContent(int playlist,int pos,String nickname){
 		pos--;
+		playlist--;
 		String msg = "Cannot add. Invalid user.";
 			if(library.get(pos) instanceof Song){
 				Song song= (Song) library.get(pos);	
@@ -210,6 +295,12 @@ public class AudioCollection{
 			}
 		return msg;
 	}
+		/** 
+	<br> Name: showPlaylistContent
+	<br> @param: String nickname, int playlist
+	<br> @return: String msg
+	<br> Process: shows the content of a playlist
+	*/
 	public String showPlaylistContent(String nickname, int playlist){
 		String msg = "Cannot show. Invalid user.";
 		for(int i = 0; i < users.size(); i++){
@@ -220,7 +311,15 @@ public class AudioCollection{
 		}
 		return msg;
 	}
+		/** 
+	<br> Name: removePlaylistContent
+	<br> @param: int playlist,int pos,String nickname
+	<br> @return: String msg
+	<br> Process: removes audios from a playlist
+	*/
 	public String removePlaylistContent(int playlist,int pos,String nickname){
+		pos--;
+		playlist--;
 		String msg = "Cannot remove. Invalid user.";
 		for(int i = 0; i < users.size(); i++){
 			if((!(users.get(i) instanceof Producer)) && users.get(i).getnickname().equalsIgnoreCase(nickname)){
@@ -231,6 +330,12 @@ public class AudioCollection{
 		}
 		return msg;
 	}
+		/** 
+	<br> Name: generateTId
+	<br> @param: void
+	<br> @return: String msg
+	<br> Process: generates an id for a playlist of podcasts
+	*/
 	public String generateTId() {
         String code = "";
         for (int j = 0; j < id.length - 4; j++){
@@ -247,6 +352,12 @@ public class AudioCollection{
         }
         return code;
     }
+		/** 
+	<br> Name: generateNId
+	<br> @param: void
+	<br> @return: String msg
+	<br> Process: generates an id for a playlist of songs
+	*/
 	public String generateNId(){
         String code = "";
         for(int i = id[0].length - 1; i > -1; i--){
@@ -260,6 +371,12 @@ public class AudioCollection{
         }
         return code;
     }
+		/** 
+	<br> Name: generateChessId
+	<br> @param: void
+	<br> @return: String msg
+	<br> Process: generates an id for a playlist of podcasts and songs
+	*/
 	public String generateChessId(){
         String code = "";
         for(int i = id.length - 1; i >= 0; i--){
@@ -272,6 +389,12 @@ public class AudioCollection{
         }
         return code;
 	}
+		/** 
+	<br> Name: shareId
+	<br> @param: String nickname, int playlist
+	<br> @return: String msg
+	<br> Process: generates an id for a playlist of an user to share
+	*/
     public String shareId(String nickname, int playlist){
 		String msg = "Cannot share, Invalid user.";
 		int counterP = 0, counterS = 0;
